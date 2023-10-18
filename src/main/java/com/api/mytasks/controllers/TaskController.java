@@ -3,7 +3,9 @@ package com.api.mytasks.controllers;
 import com.api.mytasks.entity.Task;
 import com.api.mytasks.repository.UserRespository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -20,13 +22,19 @@ public class TaskController {
     }
 
     @GetMapping(value = "/{id}")
-    public Task findTasksId(@PathVariable UUID id) {
+    public Task findTask(@PathVariable UUID id) {
         return repository.findById(id).get();
     }
 
     @PostMapping
     public Task insertTask(@RequestBody Task from) {
         return repository.save(from);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public Task deleteTask(@PathVariable UUID id) {
+        repository.deleteById(id);
+        return null;
     }
 
     @PutMapping("/{id}")
@@ -44,6 +52,5 @@ public class TaskController {
         }
 
     }
-
 
 }
