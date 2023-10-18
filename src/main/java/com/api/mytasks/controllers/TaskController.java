@@ -1,9 +1,7 @@
 package com.api.mytasks.controllers;
-
 import com.api.mytasks.entity.Task;
 import com.api.mytasks.repository.UserRespository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,8 +11,11 @@ import java.util.UUID;
 @RestController
 @RequestMapping(value = "/tasks")
 public class TaskController {
-    @Autowired
-    private UserRespository repository;
+    private final UserRespository repository;
+
+    public TaskController(UserRespository repository) {
+        this.repository = repository;
+    }
 
     @GetMapping
     public List<Task> findAllTasks() {
