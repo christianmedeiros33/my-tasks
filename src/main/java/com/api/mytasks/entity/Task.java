@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -21,4 +22,6 @@ public class Task {
     private UUID id;
     private String title;
     private String description;
+    private LocalDateTime creation;
+    private LocalDateTime lastUpdate;
 }

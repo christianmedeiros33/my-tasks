@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -27,6 +28,7 @@ public class TaskService {
     }
 
     public Task insertTask(@RequestBody Task from) {
+        from.setCreation(LocalDateTime.now());
         return repository.save(from);
     }
 
@@ -42,12 +44,13 @@ public class TaskService {
             Task task = taskGet.get();
             task.setTitle(form.getTitle());
             task.setDescription(form.getDescription());
+            task.setLastUpdate(LocalDateTime.now());
             task = repository.save(task);
             return task;
         } else {
             return null;
         }
-
     }
+
 }
 
