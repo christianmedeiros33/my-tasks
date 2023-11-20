@@ -1,7 +1,7 @@
 package com.api.mytasks.services;
 
 import com.api.mytasks.entity.Task;
-import com.api.mytasks.repository.UserRespository;
+import com.api.mytasks.repository.TaskRespository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,9 +13,9 @@ import java.util.UUID;
 
 @Service
 public class TaskService {
-    private final UserRespository repository;
+    private final TaskRespository repository;
 
-    public TaskService(UserRespository repository) {
+    public TaskService(TaskRespository repository) {
         this.repository = repository;
     }
 
