@@ -32,9 +32,8 @@ public class TaskService {
         return repository.save(from);
     }
 
-    public Task deleteTask(@PathVariable UUID id) {
+    public void deleteTask(@PathVariable UUID id) {
         repository.deleteById(id);
-        return null;
     }
 
     public Task updateTask(@PathVariable UUID id, @RequestBody Task form) {

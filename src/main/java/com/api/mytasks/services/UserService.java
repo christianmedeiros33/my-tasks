@@ -29,9 +29,8 @@ public class UserService {
         return respository.save(from);
     }
 
-    public User deleteUser(@PathVariable UUID id){
+    public void deleteUser(@PathVariable UUID id){
         respository.deleteById(id);
-        return null;
     }
 
     public User updateUser(@PathVariable UUID id, @RequestBody User from){
@@ -39,6 +38,7 @@ public class UserService {
         if (userGet.isPresent()){
             User user = userGet.get();
             user.setLastName(from.getLastName());
+            user.setEmail(from.getEmail());
             user.setLastUpdate(LocalDateTime.now() );
             user = respository.save(user);
             return  user;

@@ -23,7 +23,7 @@ public class UserController {
     public User insertUser(@RequestBody User from){return userService.insertUser(from);}
 
     @DeleteMapping(value = "/{id}")
-    public User deleteUser(@PathVariable UUID id){return userService.deleteUser(id);}
+    public void deleteUser(@PathVariable UUID id){ userService.deleteUser(id);}
 
     @PutMapping(value = "/{id}")
     public User updateUser(@PathVariable UUID id, @RequestBody User from){return userService.updateUser(id,from);}
